@@ -19,11 +19,12 @@ ContainersAssert.prototype = {
       config.queue.unshift(function() {
         if (ContainerTracking.hasContainers()) {
           ContainerTracking.reset();
-          // eslint-disable no-console
+          /* eslint-disable no-console */
           console.assert(
             false,
             `Leaked container after test ${moduleName}: ${testName} testId=${testId}`
           );
+          /* eslint-enable no-console */
         }
       });
     };
