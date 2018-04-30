@@ -3,6 +3,7 @@ import { DEBUG } from '@glimmer/env';
 import { Option } from '@glimmer/interfaces';
 import { OpaqueIterable, VersionedReference } from '@glimmer/reference';
 import {
+  ARGS,
   ElementBuilder,
   Environment as GlimmerEnvironment,
   SimpleDynamicAttribute,
@@ -106,6 +107,10 @@ export default class Environment extends GlimmerEnvironment {
     } finally {
       this.inTransaction = false;
     }
+  }
+
+  destroy() {
+    ARGS['stack'].reset();
   }
 }
 
