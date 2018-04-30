@@ -111,7 +111,10 @@ export default class Environment extends GlimmerEnvironment {
 
   destroy() {
     // TODO fix this in glimmer-vm
-    ARGS['stack'].reset();
+    let stack = ARGS['stack'];
+    if (stack !== null) {
+      stack.reset();
+    }
 
     if (ARGS.named.length > 0) {
       ARGS.named.length = 0;
