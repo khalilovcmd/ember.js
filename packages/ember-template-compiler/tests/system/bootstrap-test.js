@@ -35,7 +35,7 @@ function checkTemplate(templateName, assert) {
   runAppend(component);
 
   assert.equal(qunitFixture.textContent.trim(), 'Tobias takes teamocil', 'template works');
-  runDestroy(component);
+  runDestroy(owner);
 }
 
 moduleFor(
@@ -49,7 +49,6 @@ moduleFor(
 
     teardown() {
       setTemplates({});
-      runDestroy(component);
       fixture = component = null;
     }
 
