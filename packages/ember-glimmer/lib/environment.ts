@@ -110,7 +110,22 @@ export default class Environment extends GlimmerEnvironment {
   }
 
   destroy() {
+    // TODO fix this in glimmer-vm
     ARGS['stack'].reset();
+
+    if (ARGS.named.length > 0) {
+      ARGS.named.length = 0;
+      ARGS.named['_references'] = null;
+    }
+
+    if (ARGS.positional.length > 0) {
+      ARGS.positional.length = 0;
+      ARGS.positional['_references'] = null;
+      ARGS.positional['_tag'] = null;
+    }
+
+    ARGS.blocks.internalTag = null;
+    ARGS.blocks['internalValues'] = null;
   }
 }
 
